@@ -1,0 +1,13 @@
+﻿namespace Submission.API.Endpoints;
+
+public static class EndpointResgistration
+{
+    public static IEndpointRouteBuilder MapAllEndpoints(this IEndpointRouteBuilder app)
+    {
+        CreateArticleEndpoint.Map(app);
+        AssignAuthorEndpoint.Map(app);
+        CreateAndAssignAuthorEndpoint.Map(app);
+
+        return app;
+    }
+}
