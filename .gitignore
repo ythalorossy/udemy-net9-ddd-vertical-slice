@@ -55,3 +55,8 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+.fake
+
+# Visual Studio 2015+ local .vs directory, Visual Studio 2017+ local .vs\*.opensdf and .vs\*.psmdcp files
+.vs/
