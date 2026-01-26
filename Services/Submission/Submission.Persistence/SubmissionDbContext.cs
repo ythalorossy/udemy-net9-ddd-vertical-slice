@@ -3,7 +3,7 @@ using Submission.Domain.Entities;
 
 namespace Submission.Persistence;
 
-public class SubmissionDbContext : DbContext
+public class SubmissionDbContext(DbContextOptions<SubmissionDbContext> options) : DbContext(options)
 {
 
     #region Entities

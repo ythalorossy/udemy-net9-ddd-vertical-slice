@@ -13,11 +13,11 @@ public static class DependencyInjection
     {
         // Register DbContext with connection string from configuration
         services.AddDbContext<SubmissionDbContext>(
-        //     (provider, options) =>
-        // {
-        //     var connectionString = configuration.GetConnectionString("Database");
+            (provider, options) =>
+            {
+                var connectionString = configuration.GetConnectionString("Database");
 
-        // }
+            }
         );
 
         services.AddScoped(typeof(Repository<>));
