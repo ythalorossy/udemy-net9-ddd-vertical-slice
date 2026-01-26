@@ -60,3 +60,5 @@ nunit-*.xml
 
 # Visual Studio 2015+ local .vs directory, Visual Studio 2017+ local .vs\*.opensdf and .vs\*.psmdcp files
 .vs/
+.vs
+.vs/**

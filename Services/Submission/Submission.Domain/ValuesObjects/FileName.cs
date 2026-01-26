@@ -6,7 +6,7 @@ public class FileName : StringValueObject
 {
     private FileName(string value) => Value = value;
 
-    public static FileName Create(Asset asset, FileExtension extension)
+    public static FileName FromAsset(Asset asset, FileExtension extension)
     {
         var assetName = asset.Name.Value;
 

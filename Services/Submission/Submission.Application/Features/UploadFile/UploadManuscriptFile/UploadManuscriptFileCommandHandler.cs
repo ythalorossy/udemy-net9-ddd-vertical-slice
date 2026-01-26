@@ -1,10 +1,11 @@
 ﻿
 using Blocks.EntityFramework;
+using FIleStorage.Contracts;
 
 namespace Submission.Application.Features.UploadFile.UploadManuscriptFile;
 
 public class UploadManuscriptFileCommandHandler(
-    ArticleRepository _articleRepository, AssetTypeDefinitionRepository _assetTypeRepository)
+    ArticleRepository _articleRepository, AssetTypeDefinitionRepository _assetTypeRepository, IFileService _fileService)
     : IRequestHandler<UploadManuscriptFileCommand, IdResponse>
 {
     public async Task<IdResponse> Handle(UploadManuscriptFileCommand command, CancellationToken cancellationToken)
@@ -20,14 +21,32 @@ public class UploadManuscriptFileCommandHandler(
             asset = article.Assets.SingleOrDefault(e => e.Type == assetTypeDefinition.Id);
         }
 
-        if (asset is null)
+        asset ??= article.CreateAsset(assetTypeDefinition);
+
+        var filePath = asset.GenerateStorageFilePath(command.File.FileName);
+
+        var uploadResponse = await _fileService.UploadFileAsync(
+            filePath,
+            command.File,
+            overwrite: true,
+            tags: new() {
+                { "entity", nameof(Asset) },
+                { "entityId", asset.Id.ToString() }
+            }
+        );
+
+        try
         {
-            asset = article.CreateAsset(assetTypeDefinition);
+            asset.CreateFile(uploadResponse, assetTypeDefinition);
+
+            await _articleRepository.SaveChangesAsync(cancellationToken);
+
         }
-
-        // TODO : Upload the file to the file storage
-
-        await _articleRepository.SaveChangesAsync(cancellationToken);
+        catch (Exception)
+        {
+            await _fileService.TryDeleteFileAsync(uploadResponse.FileId);
+            throw;
+        }
 
         return new IdResponse(asset.Id);
     }

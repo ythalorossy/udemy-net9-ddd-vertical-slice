@@ -8,7 +8,7 @@ public class StringValueObject : IEquatable<StringValueObject>
 
     public override int GetHashCode() => Value.GetHashCode();
 
-    public bool Equals(StringValueObject? other) => Value.Equals(other);
+    public bool Equals(StringValueObject? other) => Value.Equals(other?.Value);
 
     public static implicit operator string(StringValueObject @valueObject) => @valueObject.Value;
 }

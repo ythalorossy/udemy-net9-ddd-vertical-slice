@@ -10,6 +10,7 @@
     <ProjectReference Include="..\..\..\BuildingBlocks\Articles.Abstractions\Articles.Abstractions.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\Blocks.Core\Blocks.Core.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\Blocks.Domain\Blocks.Domain.csproj" />
+    <ProjectReference Include="..\..\..\Modules\FileStorage\FIleStorage.Contracts\FIleStorage.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

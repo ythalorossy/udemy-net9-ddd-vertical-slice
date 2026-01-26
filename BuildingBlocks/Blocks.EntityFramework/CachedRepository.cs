@@ -5,7 +5,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace Blocks.EntityFramework;
 
-public abstract class CachedRepository<TDbContext, TEntity, TId>(TDbContext _dbContext, IMemoryCache _cache)
+public class CachedRepository<TDbContext, TEntity, TId>(TDbContext _dbContext, IMemoryCache _cache)
     where TDbContext : DbContext
     where TEntity : class, IEntity<TId>, ICacheable
     where TId : struct

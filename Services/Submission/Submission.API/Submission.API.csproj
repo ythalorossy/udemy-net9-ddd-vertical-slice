@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
+	  <UseAppHost>false</UseAppHost>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -15,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\Articles.Security\Articles.Security.csproj" />
+    <ProjectReference Include="..\..\..\Modules\FileStorage\FileStorage.MongoGridFS\FileStorage.MongoGridFS.csproj" />
     <ProjectReference Include="..\Submission.Application\Submission.Application.csproj" />
   </ItemGroup>
 

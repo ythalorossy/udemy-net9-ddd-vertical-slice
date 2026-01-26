@@ -17,21 +17,26 @@ var app = builder.Build();
 
 #region Use Services
 app
-    .UseSwagger()
-    .UseSwaggerUI()
     .UseRouting()       // Match the HTTP Request to an endpoint (route) based on the URL
     ;
 
 app.MapAllEndpoints();
 
-// TODO: Migrate Database - Create the first Migration
 if (app.Environment.IsDevelopment())
 {
+    // TODO: Migrate Database - Create the first Migration
     // TODO: Apply Migrations
     // TODO: Seed Test Data
+
+    // Enable Swagger in Development environment
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Submission API V1");
+        c.RoutePrefix = string.Empty; // Set Swagger UI at the app's root
+    });
 }
+
 #endregion
 
-
 app.Run();
-
