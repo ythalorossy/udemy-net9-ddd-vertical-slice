@@ -62,3 +62,6 @@ nunit-*.xml
 .vs/
 .vs
 .vs/**
+
+# ASDF-VM is used to manage dotnet SDK installation
+.tool-versions

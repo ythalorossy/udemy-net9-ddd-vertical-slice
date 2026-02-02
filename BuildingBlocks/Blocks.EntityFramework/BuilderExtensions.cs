@@ -10,6 +10,7 @@ PSEUDOCODE / PLAN:
   - This keeps behavior safe (no exceptions on null deserialization) and avoids risky reflection/instance creation for arbitrary TCollection.
 */
 
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Text.Json;
@@ -41,5 +42,8 @@ namespace Blocks.EntityFramework
                 v => serializeFunc(v),
                 v => deserializeFunc(v));
         }
+
+        public static PropertyBuilder<TProperty> HasColunmNameSameAsProperty<TProperty>(this PropertyBuilder<TProperty> builder)
+            => builder.HasColumnName(builder.Metadata.PropertyInfo?.Name);
     }
 }
