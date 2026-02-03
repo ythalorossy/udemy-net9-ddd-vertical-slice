@@ -1,20 +1,18 @@
 ﻿using Articles.Security;
-using Auth.Domain.Users;
 using Auth.Persistence;
 using EmailService.Smtp;
-using FastEndpoints;
 using FastEndpoints.Swagger;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 
 namespace Auth.API;
 
-public static class DependeciesInjection
+public static class DependecyInjection
 {
     public static IServiceCollection ConfigureApiOptions(
         this IServiceCollection services, IConfiguration configuration)
     {
-        // use it to configuring the options
+        services.AddAndValidateOptions<JwtOptions>(configuration);
 
         return services;
     }

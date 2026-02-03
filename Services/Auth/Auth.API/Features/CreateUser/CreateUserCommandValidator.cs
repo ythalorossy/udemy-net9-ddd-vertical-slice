@@ -1,7 +1,4 @@
-﻿using FastEndpoints;
-using FluentValidation;
-
-namespace Auth.API.Features.CreateUser;
+﻿namespace Auth.API.Features.CreateUser;
 
 public class CreateUserCommandValidator : Validator<CreateUserCommand>
 {

@@ -26,7 +26,10 @@ public partial class User : IdentityUser<int>, IEntity
 
     public DateTime? LastLogin { get; set; }
 
-    
+
     private List<UserRole> _userRoles = [];
-    public virtual IReadOnlyList<UserRole> UserRoles => _userRoles.AsReadOnly();
+    public virtual IReadOnlyList<UserRole> UserRoles => _userRoles;
+
+    private List<RefreshToken> _refreshTokens = [];
+    public virtual IReadOnlyList<RefreshToken> RefreshTokens => _refreshTokens;
 }

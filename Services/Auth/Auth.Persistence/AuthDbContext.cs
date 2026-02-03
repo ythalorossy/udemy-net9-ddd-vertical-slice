@@ -12,6 +12,8 @@ public class AuthDbContext(DbContextOptions<AuthDbContext> options)
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        _ = options;
+
         base.OnModelCreating(builder);
         builder.ApplyConfigurationsFromAssembly(typeof(AuthDbContext).Assembly);
     }

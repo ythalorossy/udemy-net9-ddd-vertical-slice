@@ -15,7 +15,7 @@ public class CachedRepository<TDbContext, TEntity, TId>(TDbContext _dbContext, I
             .AsNoTracking()
             .ToList())!;
 
-    public TEntity GetById(TId id) 
+    public TEntity GetById(TId id)
         => GetAll()
             .Single(e => e.Id.Equals(id));
 }
