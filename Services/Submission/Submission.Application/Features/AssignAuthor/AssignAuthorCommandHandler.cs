@@ -1,4 +1,4 @@
-﻿using Blocks.EntityFramework;
+﻿using Blocks.EntityFrameworkCore;
 
 namespace Submission.Application.Features.AssignAuthor;
 

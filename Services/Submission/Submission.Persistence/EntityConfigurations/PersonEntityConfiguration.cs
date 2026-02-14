@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Submission.Domain.Entities;
 
-namespace Blocks.EntityFramework.EntityConfigurations;
+namespace Blocks.EntityFrameworkCore.EntityConfigurations;
 
 internal class PersonEntityConfiguration : EntityConfiguration<Person>
 {

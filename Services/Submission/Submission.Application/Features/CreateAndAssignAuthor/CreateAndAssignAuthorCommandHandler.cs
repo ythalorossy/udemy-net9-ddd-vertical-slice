@@ -1,4 +1,4 @@
-﻿using Blocks.EntityFramework;
+﻿using Blocks.EntityFrameworkCore;
 
 
 namespace Submission.Application.Features.CreateAndAssignAuthor;
@@ -16,7 +16,7 @@ public class CreateAndAssignAuthorCommandHandler(ArticleRepository _articleRepos
             author = Author.Create(command.Email!, command.FirstName!, command.LastName!, command.Title, command.Affiliation!);
         else { }    // TODO: Author is an User
 
-        article.AssignAuthor(author, command.ContributionAreas, command.IsCorrespondingAuthor);
+        article.AssignAuthor(author!, command.ContributionAreas, command.IsCorrespondingAuthor);
 
         await _articleRepository.SaveChangesAsync(cancellationToken);
 

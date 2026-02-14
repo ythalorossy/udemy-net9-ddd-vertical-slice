@@ -1,5 +1,5 @@
 ﻿
-using Blocks.EntityFramework;
+using Blocks.EntityFrameworkCore;
 using FIleStorage.Contracts;
 
 namespace Submission.Application.Features.UploadFile.UploadManuscriptFile;

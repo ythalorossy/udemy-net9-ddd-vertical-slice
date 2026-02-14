@@ -1,0 +1,29 @@
+﻿using Articles.Abstractions.Enums;
+using Auth.Domain.Persons.ValueObjects;
+using Auth.Domain.Users;
+using Blocks.Domain.Entities;
+
+namespace Auth.Domain.Persons;
+
+public partial class Person : Entity
+{
+    public required string FirstName { get; set; }
+
+    public required string LasttName { get; set; }
+
+    public string FullName => FirstName + " " + LasttName;
+
+    public required Gender Gender { get; set; }
+
+    public HonorificTitle? Honorific { get; set; }
+
+    public ProfessionalProfile? ProfessionalProfile { get; set; }
+
+    public required EmailAddress Email { get; set; }
+
+    public string? PictureUrl { get; set; } = null!;
+
+    public int? UserId { get; set; }
+
+    public User? User { get; set; }
+}
