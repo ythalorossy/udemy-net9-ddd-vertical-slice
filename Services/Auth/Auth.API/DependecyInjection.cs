@@ -1,4 +1,5 @@
 ﻿using Articles.Security;
+using Auth.API.Features.Persons;
 using Auth.Persistence;
 using EmailService.Smtp;
 using FastEndpoints.Swagger;
@@ -31,6 +32,8 @@ public static class DependecyInjection
 
         services
             .AddSmtpEmailService(configuration);
+
+        services.AddSingleton<GrpcTypeAdapterConfig>();
 
         return services;
     }

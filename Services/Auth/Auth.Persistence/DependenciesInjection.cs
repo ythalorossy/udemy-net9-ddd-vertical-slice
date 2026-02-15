@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Auth.Persistence.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,6 +17,8 @@ public static class DependenciesInjection
             {
                 options.UseSqlServer(connectionString);
             });
+
+        services.AddScoped<PersonRepository>();
 
         return services;
     }

@@ -1,5 +1,6 @@
 ﻿using Articles.Abstractions;
 using Auth.Domain.Persons.ValueObjects;
+using Auth.Domain.Users;
 
 namespace Auth.Domain.Persons;
 
@@ -25,5 +26,12 @@ public partial class Person
         // TODO: Add domain events if needed
 
         return person;
+    }
+
+    public void AssignUser(User user)
+    {
+
+        this.UserId = user.Id;
+        this.Email.NormalizedEmail = user.NormalizedEmail!;
     }
 }
